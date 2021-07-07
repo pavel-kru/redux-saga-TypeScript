@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
-import { RouteComponentProps } from '@reach/router';
 
 import { RootState } from './store/roootStore';
 import Cart from './components/Cart/Cart';
@@ -66,13 +65,10 @@ const App: React.FC = () => {
     }
   }, [cartChanged, dispatch]);
 
-  const PrivatePage = React.useCallback(
-    () => (
-      <React.Suspense fallback={<Spinner />}>
-        <ImportPrivatePage />
-      </React.Suspense>
-    ),
-    [],
+  const PrivatePage: React.FC = () => (
+    <React.Suspense fallback={<Spinner />}>
+      <ImportPrivatePage />
+    </React.Suspense>
   );
 
   return (
