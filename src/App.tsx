@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
-import { RouteComponentProps } from '@reach/router';
 
 import { RootState } from './store/roootStore';
 import Cart from './components/Cart/Cart';

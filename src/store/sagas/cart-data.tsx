@@ -14,14 +14,14 @@ export function* getCartData() {
     return data;
   };
   try {
-    const cartData = yield call(getRequest);
+    const cartData: object = yield call(getRequest);
     yield put(replaceCart(cartData));
   } catch (error) {
     yield put(errorNotification());
   }
 }
 
-export function* putCartData(action) {
+export function* putCartData(action: any) {
   yield put(pendigNotification());
   const sendRequest = async () => {
     const response = await fetch(PATH, {

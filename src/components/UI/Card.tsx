@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Card.module.css';
 
-const Card = props => {
+const Card: React.FC<{ className: string }> = props => {
   return <section className={`${classes.card} ${props.className ? props.className : ''}`}>{props.children}</section>;
 };
 

@@ -1,7 +1,13 @@
 import React from 'react';
 import classes from './Notification.module.css';
 
-const Notification = props => {
+interface Status {
+  status: string;
+  title: string;
+  message: string
+}
+
+const Notification: React.FC<Status> = (props) => {
   let specialClasses = '';
 
   if (props.status === 'error') {

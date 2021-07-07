@@ -5,6 +5,7 @@ interface Item {
   quantity: number;
   totalAmount: number;
   price: number;
+  userId: ''
 }
 
 const initialState = { items: [], totalQuantity: 0, changed: false };
@@ -34,6 +35,7 @@ export const cartReducer = (state = initialState, action: any) => {
           ...existingItem,
           quantity: ++existingItem.quantity,
           totalAmount: existingItem.totalAmount + existingItem.price,
+          userId: action.userId
         };
         updatedItems = [...state.items];
         updatedItems[existingCartItemIndex] = updatedItem;
