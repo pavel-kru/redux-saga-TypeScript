@@ -1,0 +1,32 @@
+@import '../../variables';
+
+.form {
+  display: grid;
+  place-content: center;
+  margin: 20px auto 0 auto;
+  width: 50%;
+  border: 2px solid wheat;
+  border-radius: 8px;
+  padding: 20px 0;
+  button {
+    width: 10em;
+    &:first-child {
+      margin-right: 5px;
+    }
+    &:disabled{
+      background-color: whitesmoke;
+      color: darkgray;
+    }
+  }
+  .SwitchSign {
+    color: $cream;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 1200px) {
+  .form {
+    width: 30vw;
+  }
+}
