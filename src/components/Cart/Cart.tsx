@@ -4,15 +4,15 @@ import { createSelector } from 'reselect';
 
 import Card from '../UI/Card';
 import classes from './Cart.module.css';
-import CartItem from './CartItem.tsx';
+import CartItem from './CartItem';
 
 const cartSelector = createSelector(
-  state => state.cart,
+  (state: { cart: { items: { id: string; title: string; quantity: number; totalAmount: number; price: number }[] } }) => state.cart,
   cart => cart.items,
 );
 // const errorSelector = createSelector(cartSelector, (state) => state.cart.totalQuantity, (items, qty) => !items.length && qty ? 'Something wrong' : undefined);
 
-const Cart = () => {
+const Cart: React.FC = () => {
   const cartItems = useSelector(cartSelector);
 
   return (

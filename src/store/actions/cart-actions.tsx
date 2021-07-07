@@ -1,6 +1,6 @@
 import { ADD_ITEM, REMOVE_ITEM, INIT_GET_FETCH, INIT_PUT_FETCH, REPLACE_CART } from '../actionsTypes';
 
-export const addItem = (id: string, title: string, price: number) => {
+export const addItem = (id: string, title: string, price: number, userId: string) => {
   return {
     type: ADD_ITEM,
     item: {
@@ -9,6 +9,7 @@ export const addItem = (id: string, title: string, price: number) => {
       price: price,
       totalAmount: price,
       quantity: 1,
+      userId: userId
     },
   };
 };

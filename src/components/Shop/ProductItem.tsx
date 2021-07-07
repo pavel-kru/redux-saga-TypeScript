@@ -7,11 +7,18 @@ import classes from './ProductItem.module.css';
 import { addItem } from '../../store/actions/cart-actions';
 
 const userIdSelector = createSelector(
-  state => state.auth,
+  (state: { auth: { userId: string } }) => state.auth,
   auth => auth.userId,
 );
 
-const ProductItem = props => {
+interface Props {
+  title: string;
+  price: number;
+  description: string;
+  id: string;
+}
+
+const ProductItem: React.FC<Props> = props => {
   const { title, price, description, id } = props;
 
   const dispatch = useDispatch();
@@ -22,7 +29,7 @@ const ProductItem = props => {
 
   return (
     <li className={classes.item}>
-      <Card>
+      <Card className=''>
         <header>
           <h3>{title}</h3>
           <div className={classes.price}>${price.toFixed(2)}</div>
