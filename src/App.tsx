@@ -61,13 +61,22 @@ const App: React.FC = () => {
     dispatch(initPutFetch(cart, userId));
   }, [cart, userId]);
 
-  const PrivatePage: React.FC = () => (
-    <React.Suspense fallback={<Spinner />}>
-      <ImportPrivatePage />
-    </React.Suspense>
+  // const PrivatePage: React.FC<unknown> = () => (
+  //   <React.Suspense fallback={<Spinner />}>
+  //     <ImportPrivatePage />
+  //   </React.Suspense>
+  // );
+
+  const privateRoute = React.useMemo(
+    () => (
+      <React.Suspense fallback={<Spinner />}>
+        <ImportPrivatePage />
+      </React.Suspense>
+    ),
+    [],
   );
 
-  const privateRoute = React.useMemo(() => PrivatePage, []);
+  console.log(typeof privateRoute);
 
   return (
     <>
