@@ -1,13 +1,13 @@
 import { getCartData, putCartData } from './cart-data';
-import { ADD_ITEM, INIT_GET_FETCH, INIT_PUT_FETCH, LOGIN_AUTO_SIGNIN, LOGIN_START, LOGOUT } from '../actionsTypes';
+import { INIT_GET_FETCH, INIT_PUT_FETCH, LOGIN_AUTO_SIGNIN, LOGIN_START, LOGOUT } from '../actionsTypes';
 import { authCheckStateSaga, login, logout } from './auth';
 import { takeEvery, all, takeLatest } from 'redux-saga/effects';
 
-export function* watchCart() {
+export function* watchCart(): any {
   yield takeEvery(INIT_GET_FETCH, getCartData);
   yield takeEvery(INIT_PUT_FETCH, putCartData);
 }
 
-export function* watchAuth() {
+export function* watchAuth(): any {
   yield all([takeLatest(LOGIN_START, login), takeEvery(LOGIN_AUTO_SIGNIN, authCheckStateSaga), takeEvery(LOGOUT, logout)]);
 }

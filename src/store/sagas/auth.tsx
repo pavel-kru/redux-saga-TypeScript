@@ -6,13 +6,13 @@ export function* checkAuthTimeout(msec: any): any {
   yield call(logout);
 }
 
-export function* logout() {
+export function* logout(): any {
   yield call([localStorage, 'removeItem'], 'token');
   yield call([localStorage, 'removeItem'], 'expirationDate');
   yield call([localStorage, 'removeItem'], 'userId');
 }
 
-export function* login(action: any) {
+export function* login(action: any): any {
   const authData = {
     email: action.email,
     password: action.password,
@@ -22,7 +22,7 @@ export function* login(action: any) {
   if (action.isSignIn) {
     url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAYPuEDFLF_9B5KtcQxGPCOi-wrhq47Dxc';
   }
-  const getRequest = async () => {
+  const getRequest = async (): any => {
     const response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify(authData),
@@ -57,7 +57,7 @@ export function* login(action: any) {
   }
 }
 
-export function* authCheckStateSaga() {
+export function* authCheckStateSaga(): any {
   const expirationDate = localStorage.getItem('expirationDate');
   const token = localStorage.getItem('token');
   if (!token) {

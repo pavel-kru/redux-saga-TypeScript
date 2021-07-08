@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import { RootState } from './store/roootStore';
+import { RootState } from './store/rootStore';
 import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
@@ -16,7 +16,7 @@ interface StateAuth {
   auth: { formIsShown: boolean; token: string };
 }
 
-interface Notification {
+interface notification {
   status: string;
   title: string;
   message: string;
@@ -37,7 +37,7 @@ const ImportPrivatePage = React.lazy(() => import('./components/AuthPage/AuthPag
 
 const App: React.FC = () => {
   const cardIsVisible = useSelector<RootState>(state => state.ui.uiCardIsVisible, shallowEqual);
-  const notification: Notification = useSelector((state: { notification: Notification }) => state.notification);
+  const notification: notification = useSelector((state: { notification: notification }) => state.notification);
   const loginFormIsShown = useSelector(loginFormIsShownSelector);
   const isAuth = useSelector(isAuthSelector)?.length !== 0;
   const userId = useSelector((state: { auth: { userId: string } }) => state.auth.userId, shallowEqual);
@@ -49,8 +49,6 @@ const App: React.FC = () => {
     dispatch(initGetFetch());
   }, [dispatch]);
 
-  const number = 'rgjrghjrhgj';
-
   React.useEffect(() => dispatch<any>({ type: LOGIN_AUTO_SIGNIN }), [dispatch]);
 
   React.useEffect(() => {
@@ -58,7 +56,6 @@ const App: React.FC = () => {
       firstPutFetch = true;
       return;
     }
-    console.log(userId);
 
     dispatch(initPutFetch(cart, userId));
   }, [cart, userId]);

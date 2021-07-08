@@ -23,7 +23,7 @@ const ProductItem: React.FC<Props> = props => {
 
   const dispatch = useDispatch();
   const userId = useSelector(userIdSelector);
-  const addToCartHandler = () => {
+  const addToCartHandler = (): any => {
     dispatch(addItem(id, title, price, userId));
   };
 

@@ -1,18 +1,22 @@
 import { PENDING_NOTIFICATION, SUCCCESS_NOTIFICATION, ERROR_NOTIFICATION } from '../actionsTypes';
 
-export const pendigNotification = () => {
+interface type {
+  type: string;
+}
+
+export const pendigNotification = (): type => {
   return {
     type: PENDING_NOTIFICATION,
   };
 };
 
-export const successNotification = () => {
+export const successNotification = (): type => {
   return {
     type: SUCCCESS_NOTIFICATION,
   };
 };
 
-export const errorNotification = () => {
+export const errorNotification = (): type => {
   return {
     type: ERROR_NOTIFICATION,
   };

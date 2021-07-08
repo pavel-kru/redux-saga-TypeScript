@@ -8,7 +8,7 @@ const initialState = {
   formIsShown: false,
 };
 
-export const authReducer = (state = initialState, action: any) => {
+export const authReducer = (state = initialState, action: any): any => {
   switch (action.type) {
     case OPEN_LOGIN_FORM:
       return {

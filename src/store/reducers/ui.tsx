@@ -4,7 +4,7 @@ const initialState = {
   uiCardIsVisible: false,
 };
 
-export const uiReducer = (state = initialState, action: any) => {
+export const uiReducer = (state = initialState, action: any): { uiCardIsVisible: boolean } => {
   switch (action.type) {
     case TOGGLE_UI_CARD:
       return {

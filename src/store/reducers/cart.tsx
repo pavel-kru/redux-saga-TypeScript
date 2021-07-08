@@ -9,7 +9,7 @@ interface Item {
 
 const initialState = { items: [], totalQuantity: 0, changed: false, userId: '' };
 
-export const cartReducer = (state = initialState, action: any) => {
+export const cartReducer = (state = initialState, action: any): any => {
   let updateTotalQuantity: number;
   let existingCartItemIndex: number;
   let updatedItems: Item[] = [];

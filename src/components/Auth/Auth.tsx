@@ -48,14 +48,14 @@ const errorSelector = createSelector(
   auth => auth.error,
 );
 
-const Auth = () => {
+const Auth: React.FC = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(isLoadingSelector);
   const error = useSelector(errorSelector);
   const [isSignIn, setIsSignIn] = React.useState(true);
   const [authForm, setAuthForm] = React.useState(initialForm);
 
-  const loginHandler = (event: React.SyntheticEvent) => {
+  const loginHandler = (event: React.SyntheticEvent): any => {
     event.preventDefault();
     dispatch({
       type: LOGIN_START,
@@ -66,14 +66,14 @@ const Auth = () => {
     setAuthForm({ ...initialForm });
   };
 
-  const logoutHandler = (event: React.SyntheticEvent) => {
+  const logoutHandler = (event: React.SyntheticEvent): any => {
     event.preventDefault();
     dispatch({ type: LOGOUT });
   };
 
-  const signInSignUPHandler = () => setIsSignIn(prev => !prev);
+  const signInSignUPHandler = (): any => setIsSignIn(prev => !prev);
 
-  const inputChangeHandler = (event: { target: HTMLInputElement }) => {
+  const inputChangeHandler = (event: { target: HTMLInputElement }): any => {
     const [input] = Object.values(authForm).filter(input => input.elementConfig.type === event.target.id);
     const updatedInput = {
       ...input,

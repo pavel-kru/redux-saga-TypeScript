@@ -1,8 +1,8 @@
 import { PENDING_NOTIFICATION, SUCCCESS_NOTIFICATION, ERROR_NOTIFICATION } from '../actionsTypes';
 
-const initialState = {};
+const initialState = { status: '', title: '', message: '' };
 
-export const notificationReducer = (state = initialState, action: any) => {
+export const notificationReducer = (state = initialState, action: any): any => {
   switch (action.type) {
     case PENDING_NOTIFICATION:
       return {

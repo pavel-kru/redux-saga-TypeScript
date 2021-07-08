@@ -4,8 +4,8 @@ import { pendigNotification, successNotification, errorNotification } from '../a
 
 const PATH = 'https://http-test-ba6d3-default-rtdb.firebaseio.com/cart.json';
 
-export function* getCartData() {
-  const getRequest = async () => {
+export function* getCartData(): any {
+  const getRequest = async (): any => {
     const response = await fetch(PATH);
     if (!response.ok) {
       throw new Error('Fetching cart data failed.');
@@ -22,11 +22,10 @@ export function* getCartData() {
   }
 }
 
-export function* putCartData(action: any) {
+export function* putCartData(action: any): any {
   yield put(pendigNotification());
-  console.log(action.userId);
 
-  const sendRequest = async () => {
+  const sendRequest = async (): any => {
     const response = await fetch(PATH, {
       method: 'PUT',
       body: JSON.stringify({

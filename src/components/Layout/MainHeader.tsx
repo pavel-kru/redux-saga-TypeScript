@@ -12,8 +12,8 @@ import classes from './MainHeader.module.css';
 
 const MainHeader: React.FC<{ isAuth: boolean }> = ({ isAuth }) => {
   const dispatch = useDispatch();
-  const openLoginFormHandler = () => dispatch({ type: OPEN_LOGIN_FORM });
-  const logoutHandler = () => dispatch({ type: LOGOUT });
+  const openLoginFormHandler = (): any => dispatch({ type: OPEN_LOGIN_FORM });
+  const logoutHandler = (): any => dispatch({ type: LOGOUT });
   return (
     <header className={classes.header}>
       <h1>ReduxCart</h1>

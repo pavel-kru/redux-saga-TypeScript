@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { uiReducer } from '../store/reducers/ui';
-import { cartReducer } from '../store/reducers/cart';
-import { notificationReducer } from '../store/reducers/notification';
+import { uiReducer } from './reducers/ui';
+import { cartReducer } from './reducers/cart';
+import { notificationReducer } from './reducers/notification';
 
-import { watchAuth, watchCart } from '../store/sagas';
-import { authReducer } from '../store/reducers/auth';
+import { watchAuth, watchCart } from './sagas';
+import { authReducer } from './reducers/auth';
 
 const rootReducer = combineReducers({
   ui: uiReducer,
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
 const sagaMiddleWare = createSagaMiddleware();
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose : null;
-export const storefege = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleWare)));
+export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleWare)));
 sagaMiddleWare.run(watchCart);
 sagaMiddleWare.run(watchAuth);
 

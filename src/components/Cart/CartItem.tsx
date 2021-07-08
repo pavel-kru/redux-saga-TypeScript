@@ -19,10 +19,10 @@ const CartItem: React.FC<Props> = props => {
 
   const userId = useSelector((state: { auth: { userId: '' } }) => state.auth.userId);
   const dispatch = useDispatch();
-  const addToCartHandler = () => {
+  const addToCartHandler = (): any => {
     dispatch(addItem(id, title, price, userId));
   };
-  const removeItemFromCartHandler = () => {
+  const removeItemFromCartHandler = (): any => {
     dispatch(removeItem(id));
   };
 
