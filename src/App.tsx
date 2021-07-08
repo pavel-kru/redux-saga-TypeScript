@@ -67,13 +67,15 @@ const App: React.FC = () => {
     </React.Suspense>
   );
 
+  const privateRoute = React.useMemo(() => PrivatePage, []);
+
   return (
     <>
       {notification && <Notification status={notification.status} title={notification.title} message={notification.message} />}
       <Layout isAuth={isAuth}>
         <React.Suspense fallback={<Spinner />}>{loginFormIsShown && <Auth />}</React.Suspense>
         {cardIsVisible && <Cart />}
-        <PrivateRoute newcomponent={PrivatePage} isAuth={isAuth} path='/' />
+        <PrivateRoute newcomponent={privateRoute} isAuth={isAuth} path='/' />
         <Products />
       </Layout>
     </>
