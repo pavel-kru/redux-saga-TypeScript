@@ -61,13 +61,10 @@ const App: React.FC = () => {
     dispatch(initPutFetch(cart, userId));
   }, [cart, userId]);
 
-  const PrivatePage = React.useCallback(
-    () => (
-      <React.Suspense fallback={<Spinner />}>
-        <ImportPrivatePage />
-      </React.Suspense>
-    ),
-    [],
+  const PrivatePage: React.FC = () => (
+    <React.Suspense fallback={<Spinner />}>
+      <ImportPrivatePage />
+    </React.Suspense>
   );
 
   return (
