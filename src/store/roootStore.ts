@@ -15,9 +15,8 @@ const rootReducer = combineReducers({
 });
 
 const sagaMiddleWare = createSagaMiddleware();
-const rgjkrghremglremkhlrtkh;
-const composeEnhatrthtehtrjncers =
-  process.env.NODE_ENV === 'development' ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose : null;
+
+const composeEnhancers = process.env.NODE_ENV === 'development' ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose : null;
 export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleWare)));
 sagaMiddleWare.run(watchCart);
 sagaMiddleWare.run(watchAuth);

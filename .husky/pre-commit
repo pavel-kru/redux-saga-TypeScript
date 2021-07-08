@@ -3,7 +3,6 @@
 
 
 yarn lint-fix
-
 git add
 
 # npm test
