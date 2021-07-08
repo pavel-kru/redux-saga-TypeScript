@@ -74,12 +74,6 @@
     "hooks": {
       "pre-push": "yarn lint",
       "pre-commit": "lint-staged"
-    },
-    "lint-staged": {
-      "*.tsx": [
-        "yarn run lint-fix",
-        "git add"
-      ]
     }
   }
 }
