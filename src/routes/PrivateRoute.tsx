@@ -8,6 +8,6 @@ interface PrivateRouteProps extends RouteProps {
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ newcomponent: Component, isAuth, path, ...rest }) => (
-  <>{isAuth ? <Route {...rest} render={props => <Component />} /> : <Redirect to={path} /
+  <>{isAuth ? <Route {...rest} render={props => <Component />} /> : <Redirect to={path} />}</>
 );
 export default PrivateRoute;
