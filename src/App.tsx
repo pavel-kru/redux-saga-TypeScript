@@ -7,7 +7,7 @@ import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import { initGetFetch, initPutFetch } from './store/actions/cart-actions';
-import Notification from './components/UI/Notification';
+import NotificationMessage from './components/UI/Notification';
 import { LOGIN_AUTO_SIGNIN } from './store/actionsTypes';
 import PrivateRoute from './routes/PrivateRoute';
 import Spinner from './components/UI/Spinner/Spinner';
@@ -58,7 +58,7 @@ const App: React.FC = () => {
     }
 
     dispatch(initPutFetch(cart, userId));
-  }, [cart, userId]);
+  }, [cart, userId, dispatch]);
   const privateRoute = React.useMemo(
     () => (
       <React.Suspense fallback={<Spinner />}>
@@ -69,7 +69,7 @@ const App: React.FC = () => {
   );
   return (
     <>
-      {notification && <Notification status={notification.status} title={notification.title} message={notification.message} />}
+      {notification && <NotificationMessage status={notification.status} title={notification.title} message={notification.message} />}
       <Layout isAuth={isAuth}>
         <React.Suspense fallback={<Spinner />}>{loginFormIsShown && <Auth />}</React.Suspense>
         {cardIsVisible && <Cart />}

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toogleUiCard } from '../../store/actions/ui-actions';
 
 import classes from './CartButton.module.css';
-import { RootState } from '../../store/rootStore';
 
 const CartButton: React.FC = () => {
   const totalQuantity = useSelector((state: { cart: { totalQuantity: number } }) => state.cart.totalQuantity);

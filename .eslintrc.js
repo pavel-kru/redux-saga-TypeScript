@@ -12,10 +12,10 @@ module.exports = {
     "browser": true,
     "jasmine": true,
     "jest": true,
-    "es6":true
+    "es6": true,
+    "node": true
   },
   "rules": {
-    "no-undef": "off",
     "prettier/prettier": [
       "error",
       {

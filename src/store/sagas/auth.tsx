@@ -22,7 +22,7 @@ export function* login(action: any): any {
   if (action.isSignIn) {
     url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAYPuEDFLF_9B5KtcQxGPCOi-wrhq47Dxc';
   }
-  const getRequest = async (): any => {
+  const getRequest = async (): Promise<any> => {
     const response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify(authData),

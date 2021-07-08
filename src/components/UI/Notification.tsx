@@ -7,7 +7,7 @@ interface Status {
   message: string;
 }
 
-const Notification: React.FC<Status> = props => {
+const NotificationMessage: React.FC<Status> = props => {
   let specialClasses = '';
 
   if (props.status === 'error') {
@@ -27,4 +27,4 @@ const Notification: React.FC<Status> = props => {
   );
 };
 
-export default Notification;
+export default NotificationMessage;

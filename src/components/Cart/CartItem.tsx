@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { removeItem, addItem } from '../../store/actions/cart-actions';
 import classes from './CartItem.module.css';
