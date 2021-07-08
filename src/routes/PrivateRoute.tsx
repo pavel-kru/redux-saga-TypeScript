@@ -3,7 +3,7 @@ import { Route, Redirect, RouteProps } from 'react-router-dom';
 
 interface PrivateRouteProps extends RouteProps {
   path: string;
-  isAuth?: boolean;
+  isAuth: boolean;
   newcomponent: React.FC;
 }
 
