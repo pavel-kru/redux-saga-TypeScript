@@ -60,13 +60,6 @@ const App: React.FC = () => {
 
     dispatch(initPutFetch(cart, userId));
   }, [cart, userId]);
-
-  // const PrivatePage: React.FC<unknown> = () => (
-  //   <React.Suspense fallback={<Spinner />}>
-  //     <ImportPrivatePage />
-  //   </React.Suspense>
-  // );
-
   const privateRoute = React.useMemo(
     () => (
       <React.Suspense fallback={<Spinner />}>
@@ -75,9 +68,6 @@ const App: React.FC = () => {
     ),
     [],
   );
-
-  console.log(typeof privateRoute);
-
   return (
     <>
       {notification && <Notification status={notification.status} title={notification.title} message={notification.message} />}
