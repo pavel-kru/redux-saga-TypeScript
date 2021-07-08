@@ -49,6 +49,8 @@ const App: React.FC = () => {
     dispatch(initGetFetch());
   }, [dispatch]);
 
+  const number = 'rgjrghjrhgj';
+
   React.useEffect(() => dispatch<any>({ type: LOGIN_AUTO_SIGNIN }), [dispatch]);
 
   React.useEffect(() => {
