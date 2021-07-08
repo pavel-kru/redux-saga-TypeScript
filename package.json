@@ -21,7 +21,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint-fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix --color",
     "pretty": "pretty-quick --staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prettier": "prettier --write src/**/*.js"
   },
   "eslintConfig": {
     "extends": [
@@ -69,5 +70,11 @@
     "redux-saga": "^1.1.3",
     "reselect": "^4.0.0",
     "typescript": "^4.3.5"
-  }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx, ts, tsx}": [
+        "eslint --fix",
+        "prettier --write"
+    ]
+}
 }
