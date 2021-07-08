@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 
 import { removeItem, addItem } from '../../store/actions/cart-actions';
 import classes from './CartItem.module.css';
@@ -17,9 +17,10 @@ interface Props {
 const CartItem: React.FC<Props> = props => {
   const { title, quantity, total, price, id } = props.item;
 
+  const userId = useSelector((state: { auth: { userId: '' } }) => state.auth.userId);
   const dispatch = useDispatch();
   const addToCartHandler = () => {
-    dispatch(addItem(id, title, price));
+    dispatch(addItem(id, title, price, userId));
   };
   const removeItemFromCartHandler = () => {
     dispatch(removeItem(id));

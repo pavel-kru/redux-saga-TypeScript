@@ -5,10 +5,9 @@ interface Item {
   quantity: number;
   totalAmount: number;
   price: number;
-  userId: ''
 }
 
-const initialState = { items: [], totalQuantity: 0, changed: false };
+const initialState = { items: [], totalQuantity: 0, changed: false, userId: '' };
 
 export const cartReducer = (state = initialState, action: any) => {
   let updateTotalQuantity: number;
@@ -21,7 +20,7 @@ export const cartReducer = (state = initialState, action: any) => {
       return {
         ...state,
         items: action.payload.items || [],
-        totalQuantity: action.payload.totalQuantity,
+        totalQuantity: action.payload.totalQuantity || 0,
       };
     case ADD_ITEM:
       updateTotalQuantity = state.totalQuantity + 1;
@@ -35,7 +34,6 @@ export const cartReducer = (state = initialState, action: any) => {
           ...existingItem,
           quantity: ++existingItem.quantity,
           totalAmount: existingItem.totalAmount + existingItem.price,
-          userId: action.userId
         };
         updatedItems = [...state.items];
         updatedItems[existingCartItemIndex] = updatedItem;
@@ -47,6 +45,7 @@ export const cartReducer = (state = initialState, action: any) => {
         items: updatedItems,
         totalQuantity: updateTotalQuantity,
         changed: true,
+        userId: action.userId,
       };
 
     case REMOVE_ITEM:
@@ -72,6 +71,7 @@ export const cartReducer = (state = initialState, action: any) => {
         items: updatedItems,
         totalQuantity: updateTotalQuantity,
         changed: true,
+        userId: action.userId,
       };
     default:
       return state;

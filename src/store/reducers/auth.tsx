@@ -38,7 +38,7 @@ export const authReducer = (state = initialState, action: any) => {
         error: action.payload,
       };
     case LOGOUT:
-      return initialState;
+      return { ...initialState };
     default:
       return state;
   }

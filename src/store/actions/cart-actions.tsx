@@ -9,7 +9,7 @@ export const addItem = (id: string, title: string, price: number, userId: string
       price: price,
       totalAmount: price,
       quantity: 1,
-      userId: userId
+      userId: userId,
     },
   };
 };
@@ -26,10 +26,12 @@ export const initGetFetch = () => {
     type: INIT_GET_FETCH,
   };
 };
-export const initPutFetch = (cartChanged: boolean) => {
+export const initPutFetch = (cart: any, userId: string) => {
+  console.log(cart, userId);
   return {
     type: INIT_PUT_FETCH,
-    cart: cartChanged,
+    cart: cart,
+    userId: userId,
   };
 };
 

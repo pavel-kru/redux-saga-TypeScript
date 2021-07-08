@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Input.module.scss';
 
-const Input: React.FC<any> = (props) => {
-  let inputStyle = `${styles.Input} ${props.className} ${props.error === 1 ? styles.errorInput : null}`;
+const Input: React.FC<any> = props => {
+  const inputStyle = `${styles.Input} ${props.className} ${props.error === 1 ? styles.errorInput : null}`;
 
   return (
     <>

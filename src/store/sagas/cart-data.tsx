@@ -14,7 +14,8 @@ export function* getCartData() {
     return data;
   };
   try {
-    const cartData: object = yield call(getRequest);
+    const cartData: unknown = yield call(getRequest);
+
     yield put(replaceCart(cartData));
   } catch (error) {
     yield put(errorNotification());
@@ -23,13 +24,15 @@ export function* getCartData() {
 
 export function* putCartData(action: any) {
   yield put(pendigNotification());
+  console.log(action.userId);
+
   const sendRequest = async () => {
     const response = await fetch(PATH, {
-      method: 'PATCH',
+      method: 'PUT',
       body: JSON.stringify({
         items: action.cart.items,
         totalQuantity: action.cart.totalQuantity,
-        userId: action.cart.userId,
+        // userId: action.userId,
       }),
     });
 

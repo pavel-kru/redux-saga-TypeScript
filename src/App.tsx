@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import { RootState } from './store/roootStore';
@@ -23,6 +23,7 @@ interface Notification {
 }
 
 let firstPutFetch = false;
+
 const loginFormIsShownSelector = createSelector(
   (state: StateAuth) => state.auth,
   auth => auth.formIsShown,
@@ -35,35 +36,30 @@ const Auth = React.lazy(() => import('./components/Auth/Auth'));
 const ImportPrivatePage = React.lazy(() => import('./components/AuthPage/AuthPage'));
 
 const App: React.FC = () => {
-  const cardIsVisible = useSelector<RootState>(state => state.ui.uiCardIsVisible);
+  const cardIsVisible = useSelector<RootState>(state => state.ui.uiCardIsVisible, shallowEqual);
   const notification: Notification = useSelector((state: { notification: Notification }) => state.notification);
   const loginFormIsShown = useSelector(loginFormIsShownSelector);
   const isAuth = useSelector(isAuthSelector)?.length !== 0;
-  const cartChanged: boolean = useSelector(
-    (state: {
-      cart: {
-        changed: boolean;
-      };
-    }) => state.cart.changed,
-  );
+  const userId = useSelector((state: { auth: { userId: string } }) => state.auth.userId, shallowEqual);
+  const cart = useSelector((state: { cart: any }) => state.cart, shallowEqual);
 
-  const dispatch = useDispatch<React.Dispatch<{ type: string }>>();
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     dispatch(initGetFetch());
   }, [dispatch]);
 
-  React.useEffect(() => dispatch({ type: LOGIN_AUTO_SIGNIN }), [dispatch]);
+  React.useEffect(() => dispatch<any>({ type: LOGIN_AUTO_SIGNIN }), [dispatch]);
 
   React.useEffect(() => {
     if (!firstPutFetch) {
       firstPutFetch = true;
       return;
     }
-    if (cartChanged) {
-      dispatch(initPutFetch(cartChanged));
-    }
-  }, [cartChanged, dispatch]);
+    console.log(userId);
+
+    dispatch(initPutFetch(cart, userId));
+  }, [cart, userId]);
 
   const PrivatePage = React.useCallback(
     () => (

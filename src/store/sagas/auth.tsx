@@ -31,23 +31,24 @@ export function* login(action: any) {
     const data = await response.json();
 
     if (!response.ok) {
-      // console.log(data.error.message);
       throw new Error(data.error.message + '');
     }
     return data;
   };
   try {
     const data: { localId: string; idToken: string; expiresIn: number } = yield call(getRequest);
-    const expirationDate: string = yield new Date(new Date().getTime() + data.expiresIn * 1000);
+    const expirationTime: number = yield new Date().getTime() + data.expiresIn * 1000;
+    const expirationDate = new Date(expirationTime);
+
     yield localStorage.setItem('token', data.idToken);
-    yield localStorage.setItem('expirationDate', expirationDate);
+    yield localStorage.setItem('expirationDate', `${expirationDate}`);
     yield localStorage.setItem('userId', data.localId);
     yield put({
       type: LOGIN_SUCCESS,
       userId: data.localId,
       token: data.idToken,
     });
-    yield call(checkAuthTimeout, expirationDate);
+    yield call(checkAuthTimeout, data.expiresIn * 1000);
   } catch (error) {
     yield put({
       type: LOGIN_FAIL,
@@ -59,9 +60,9 @@ export function* login(action: any) {
 export function* authCheckStateSaga() {
   const expirationDate = localStorage.getItem('expirationDate');
   const token = localStorage.getItem('token');
-  if (!expirationDate) {
+  if (!token) {
     yield call(logout);
-  } else {
+  } else if (expirationDate) {
     const newExpirationDate: Date = yield new Date(expirationDate);
     if (newExpirationDate <= new Date()) {
       yield call(logout);

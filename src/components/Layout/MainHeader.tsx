@@ -10,7 +10,7 @@ import classes from './MainHeader.module.css';
 //   (auth) => auth.formIsShown
 // );
 
-const MainHeader: React.FC<{isAuth: boolean}> = ({ isAuth }) => {
+const MainHeader: React.FC<{ isAuth: boolean }> = ({ isAuth }) => {
   const dispatch = useDispatch();
   const openLoginFormHandler = () => dispatch({ type: OPEN_LOGIN_FORM });
   const logoutHandler = () => dispatch({ type: LOGOUT });
