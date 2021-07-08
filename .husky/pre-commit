@@ -2,6 +2,7 @@
 . "$(dirname "$0")/_/husky.sh"
 
 
+yarn run lint
 yarn run prettier
 # yarn test
 # npm test
