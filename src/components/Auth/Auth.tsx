@@ -88,6 +88,7 @@ const Auth = () => {
       };
     });
   };
+  const number: string = 35;
 
   const inputs = Object.values(authForm).map(input => (
     <Input
