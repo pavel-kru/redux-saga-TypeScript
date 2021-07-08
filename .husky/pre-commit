@@ -3,5 +3,5 @@
 
 
 yarn pretty
-yarn test
+# yarn test
 # npm test
