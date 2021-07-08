@@ -29,13 +29,7 @@
   "husky": {
     "hooks": {
       "pre-push": "yarn lint",
-      "pre-commit": "lint-staged"
-    },
-    "lint-staged": {
-      "*.tsx": [
-        "yarn add lint-fix",
-        "git add"
-      ]
+      "pre-commit": "pretty-quick --staged"
     }
   },
   "browserslist": {
